@@ -8,3 +8,5 @@ pluginManagement {
 
 include ':FtcRobotController'
 include ':TeamCode'
+include ':26-27_Offseason-Project'
+project(':26-27_Offseason-Project').projectDir = new File(rootProject.projectDir, 'libs/:26-27_Offseason-Project')

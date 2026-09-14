@@ -1,0 +1,19 @@
+/**
+ * <div style="background-color: #0CA366; color: black; border-bottom: 4px dashed black;">
+ * <h1>Title</h1>
+ * </div>
+ * <div style="background-color: #009AD2; color: black; border-top: 4px dashed black; border-bottom: 4px dashed black;">
+ * <h2>Overview</h2>
+ * <p>example text</p>
+ * </div>
+ * <div style="background-color: #0CA366; color: black; border-top: 4px dashed black;">
+ * <h2>Other Stuff</h2>
+ * </div>
+ * @author Author
+ * @since MM/DD/YYYY
+ * @version M.m.p (MM/DD/YYYY)
+ */
+
+ Author should be quite obvious
+ Since is the date at which the file was created
+ Versioning is Major.minor.patch and includes last update date
