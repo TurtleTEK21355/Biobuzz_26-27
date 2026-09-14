@@ -26,5 +26,5 @@ android {
 
 dependencies {
     implementation project(':FtcRobotController')
-    implementation project(':26-27_Offseason-Project')
+    implementation project(':offseason-teamcode')
 }

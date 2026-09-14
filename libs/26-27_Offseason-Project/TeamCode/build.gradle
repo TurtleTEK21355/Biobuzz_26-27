@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    implementation project(':FtcRobotController')
+    api project(':FtcRobotController')
     testImplementation platform("org.junit:junit-bom:6.0.2")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api"
