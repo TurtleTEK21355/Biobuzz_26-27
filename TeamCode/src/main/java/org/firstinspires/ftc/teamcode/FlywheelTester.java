@@ -41,6 +41,7 @@ public class FlywheelTester extends LinearOpMode {
             shooter.setVelocity(shooterPower);
             telemetry.addData("Shooter Power:",60/28*shooter.getVelocity());
             telemetry.addData("Goal Velocity:", shooterPowerInRPM);
+            telemetry.addData("SP in Ticks", shooter.getVelocity());
             telemetry.update();
 
             if (gamepad1.aWasPressed()) {
@@ -48,6 +49,13 @@ public class FlywheelTester extends LinearOpMode {
             }
             else if (gamepad1.bWasPressed()) {
                 shooterPower -= 10;
+            }
+
+            if (gamepad1.yWasPressed()) {
+                shooterPower += 100;
+            }
+            if (gamepad1.xWasPressed()) {
+                shooterPower -= 100;
             }
         }
 
