@@ -26,5 +26,6 @@ android {
 
 dependencies {
     implementation project(':FtcRobotController')
-    implementation project(':offseason-teamcode')
+    implementation project(':LibCode')
+//    implementation "com.bylazar:panels:1.0.5"
 }
