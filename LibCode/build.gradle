@@ -30,10 +30,18 @@ android {
     }
 }
 
+repositories {
+    maven { url = 'https://maven.brott.dev/' }
+    maven { url = "https://mymaven.bylazar.com/releases"}
+}
+
 dependencies {
     api project(':FtcRobotController')
     testImplementation platform("org.junit:junit-bom:6.0.2")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+
+    implementation 'com.acmerobotics.dashboard:dashboard:0.5.1'
+    implementation "com.bylazar:fullpanels:1.0.12"
 }
