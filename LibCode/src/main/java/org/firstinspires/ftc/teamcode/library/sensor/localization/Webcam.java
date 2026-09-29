@@ -79,24 +79,25 @@ public class Webcam {
     public String returnAllAprilTagData() {
         StringBuilder outputString = new StringBuilder();
         for (AprilTagDetection detection : currentDetections) {
-            if (detection.metadata != null) {
-                outputString.append("ID ")
-                        .append(detection.id)
-                        .append("\nx ")
-                        .append(detection.ftcPose.x)
-                        .append("\ny ")
-                        .append(detection.ftcPose.y)
-                        .append("\nz ")
-                        .append(detection.ftcPose.z)
-                        .append("\npitch ")
-                        .append(detection.ftcPose.pitch)
-                        .append("\nroll ")
-                        .append(detection.ftcPose.roll)
-                        .append("\nyaw ")
-                        .append(detection.ftcPose.yaw);
-            } else {
-                outputString.append("\nDetection Unknown");
-            }
+            // TODO: Update to new vision APIS
+//            if (detection.metadata != null) {
+//                outputString.append("ID ")
+//                        .append(detection.id)
+//                        .append("\nx ")
+//                        .append(detection.ftcPose.x)
+//                        .append("\ny ")
+//                        .append(detection.ftcPose.y)
+//                        .append("\nz ")
+//                        .append(detection.ftcPose.z)
+//                        .append("\npitch ")
+//                        .append(detection.ftcPose.pitch)
+//                        .append("\nroll ")
+//                        .append(detection.ftcPose.roll)
+//                        .append("\nyaw ")
+//                        .append(detection.ftcPose.yaw);
+//            } else {
+//                outputString.append("\nDetection Unknown");
+//            }
             outputString.append("\n");
         }
         return outputString.toString();
@@ -108,20 +109,22 @@ public class Webcam {
 
     public AprilTagDetection getDetection(int id) {
         for (AprilTagDetection detection : currentDetections) {
-            if (detection.metadata != null) {
-                if (detection.id == id) {
-                    return detection;
-                }
-            }
+            // TODO: Update to new vision APIS
+//            if (detection.metadata != null) {
+//                if (detection.id == id) {
+//                    return detection;
+//                }
+//            }
 
         }
         return null;
     }
 
     public Double getRange(AprilTagDetection detection) {
-        if (detection != null && detection.metadata != null) {
-            return detection.ftcPose.range;
-        }
+        // TODO: Update to new vision APIS
+//        if (detection != null && detection.metadata != null) {
+//            return detection.ftcPose.range;
+//        }
         return null;
     }
 
