@@ -10,6 +10,7 @@ apply plugin: 'com.android.application'
 // please think carefully as to whether such customizations are really necessary
 // before doing so.
 
+
 // Custom definitions may go here
 
 // Include common definitions from above.
@@ -17,15 +18,30 @@ apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
 android {
-    namespace = 'org.firstinspires.ftc.teamcode'
+    namespace = 'org.firstinspires.ftc.libcode'
+
+    compileSdk 35
+    defaultConfig {
+        minSdk 24
+    }
 
     packagingOptions {
         jniLibs.useLegacyPackaging true
     }
 }
 
+repositories {
+    maven { url = 'https://maven.brott.dev/' }
+    maven { url = "https://mymaven.bylazar.com/releases"}
+}
+
 dependencies {
-    implementation project(':FtcRobotController')
-    implementation project(':LibCode')
-//    implementation "com.bylazar:panels:1.0.5"
+    api project(':FtcRobotController')
+    testImplementation platform("org.junit:junit-bom:6.0.2")
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+
+    implementation 'com.acmerobotics.dashboard:dashboard:0.5.1'
+    implementation "com.bylazar:fullpanels:1.0.12"
 }
