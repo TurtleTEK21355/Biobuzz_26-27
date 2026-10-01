@@ -9,4 +9,3 @@ pluginManagement {
 include ':FtcRobotController'
 include ':TeamCode'
 include ':LibCode'
-project(':LibCode').projectDir = new File(rootProject.projectDir, 'LibCode')
