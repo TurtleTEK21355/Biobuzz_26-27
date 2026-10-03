@@ -34,7 +34,7 @@ public class TwoFlywheelTester extends LinearOpMode {
         double shooterPower2 = 0;
         waitForStart();
         while (opModeIsActive()) {
-            double intakePower = gamepad1.left_trigger;
+            double intakePower = gamepad1.left_trigger-gamepad1.right_trigger;
             double y = gamepad1.left_stick_y;
             double x = -gamepad1.left_stick_x;
             double h = -gamepad1.right_stick_x;
