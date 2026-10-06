@@ -10,7 +10,7 @@ import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
 
 public class ProgrammingChassis {
     private MechanumDrive drivetrain;
-    private OTOSSensor otosSensor;
+//    private OTOSSensor otosSensor;
     private Pinpoint pinpoint;
 
     public ProgrammingChassis(MechanumDrive drivetrain, Pinpoint pinpoint) {
