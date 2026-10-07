@@ -3,26 +3,25 @@ package org.firstinspires.ftc.libcode.library.internal.math;
 import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
-// TODO: Implementation
-//import org.firstinspires.ftc.teamcode.library.internal.pid.PController;
+import org.firstinspires.ftc.libcode.library.internal.pid.PController;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 
 import java.util.List;
 
 public class PathFollower {
     private final List<Coordinate2D> path;
-//    PController xController;
-//    PController yController;
+    PController xController;
+    PController yController;
     private double feedforwardRadius = 9;
 
     public PathFollower(
-            List<Coordinate2D> path //,
-//            PController xController,
-//            PController yController
+            List<Coordinate2D> path,
+            PController xController,
+            PController yController
     ) {
         this.path = path;
-//        this.xController = xController;
-//        this.yController = yController;
+        this.xController = xController;
+        this.yController = yController;
     }
 
     public void setFeedforwardRadius(double feedforwardRadius) {
@@ -53,8 +52,8 @@ public class PathFollower {
     public void updatePControllerTarget(Coordinate2D robotPosition) {
         if (path.size() <= 2 && Coordinate2D.distanceBetweenPoints(robotPosition, path.get(path.size()-1)) <= feedforwardRadius) {
             Coordinate2D result = path.get(path.size()-1);
-//            xController.setTargetPosition(result.x);
-//            yController.setTargetPosition(result.y);
+            xController.setTargetPosition(result.x);
+            yController.setTargetPosition(result.y);
         } else {
             double distanceAlreadyCrossed = Coordinate2D.distanceBetweenPoints(getClosestPositionOnLine(robotPosition), path.get(0));
             double totalDistance = -distanceAlreadyCrossed;
@@ -78,8 +77,8 @@ public class PathFollower {
                     result = path.get(0);
                 }
             } else result = path.get(0);
-//            xController.setTargetPosition(result.x);
-//            yController.setTargetPosition(result.y);
+            xController.setTargetPosition(result.x);
+            yController.setTargetPosition(result.y);
         }
     }
 
@@ -89,13 +88,13 @@ public class PathFollower {
 
     public void targetTelemetry(){
         TelemetryPasser.telemetry.addData("Target Position: ", "("
-//                + xController.getTargetPosition()
+                + xController.getTargetPosition()
                 + ", "
-//                + yController.getTargetPosition()
+                + yController.getTargetPosition()
                 + ")"
         );
     }
 
-//    public double getXSpeed(double robotXPosition) {return xController.calculate(robotXPosition);}
-//    public double getYSpeed(double robotYPosition) {return yController.calculate(robotYPosition);}
+    public double getXSpeed(double robotXPosition) {return xController.calculate(robotXPosition);}
+    public double getYSpeed(double robotYPosition) {return yController.calculate(robotYPosition);}
 }
