@@ -1,33 +1,37 @@
 package org.firstinspires.ftc.teamcode.command;
 
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+
 import org.firstinspires.ftc.libcode.library.commandsinternal.Command;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryString;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Flywheel;
 
-public class SetFlywheelVelocity extends Command {
-   Flywheel flywheel;
+public class SetMotorVelocity extends Command {
+   DcMotorEx motor;
    double velocity;
+   double tolerance;
 
-    public SetFlywheelVelocity(Flywheel flywheel, double velocity) {
-        this.flywheel = flywheel;
+    public SetMotorVelocity(DcMotorEx motor, double velocity, double tolerance) {
+        this.motor = motor;
         this.velocity = velocity;
+        this.tolerance = tolerance;
     }
 
     @Override
     public void init() {
-        flywheel.setVelocity(velocity);
+        motor.setVelocity(velocity);
     }
 
     @Override
     public String telemetry() {
         TelemetryString string = new TelemetryString();
-        string.addData("Flywheel Velocity: ", flywheel.getVelocity());
+        string.addData(motor.getDeviceName()+" Motor Velocity: ", motor.getVelocity());
         return string.toString();
     }
 
     @Override
     public boolean isCompleted() {
-        return (Math.abs(flywheel.getVelocity() - velocity) < 20);
+        return (Math.abs(motor.getVelocity() - velocity) < tolerance);
 
     }
 
