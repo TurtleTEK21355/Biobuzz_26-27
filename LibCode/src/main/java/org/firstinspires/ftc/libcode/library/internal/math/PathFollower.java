@@ -14,11 +14,7 @@ public class PathFollower {
     PController yController;
     private double feedforwardRadius = 9;
 
-    public PathFollower(
-            List<Coordinate2D> path,
-            PController xController,
-            PController yController
-    ) {
+    public PathFollower(List<Coordinate2D> path, PController xController, PController yController) {
         this.path = path;
         this.xController = xController;
         this.yController = yController;
