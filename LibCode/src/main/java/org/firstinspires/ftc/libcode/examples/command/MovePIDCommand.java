@@ -7,13 +7,14 @@ import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.pid.PIDControllerHeading;
 import org.firstinspires.ftc.libcode.library.internal.pid.PIDControllerSpeedLimit;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryString;
+import org.firstinspires.ftc.libcode.library.sensor.localization.Localizer;
 import org.firstinspires.ftc.libcode.library.sensor.localization.OTOSSensor;
 
 public class MovePIDCommand extends Command {
     private Pose2D position;
     double speed;
     MechanumDrive drivetrain;
-    OTOSSensor otosSensor;
+    Localizer localizer;
     PIDControllerSpeedLimit yPID;
     PIDControllerSpeedLimit xPID;
     PIDControllerHeading hPID;
@@ -26,11 +27,11 @@ public class MovePIDCommand extends Command {
      * @param target Target position for movement
      * @param speed Maximum PID speed
      * @param drivetrain
-     * @param otosSensor
+     * @param localizer
      */
-    public MovePIDCommand(Pose2D target, double speed, MechanumDrive drivetrain, OTOSSensor otosSensor) {
+    public MovePIDCommand(Pose2D target, double speed, MechanumDrive drivetrain, Localizer localizer) {
         this.drivetrain = drivetrain;
-        this.otosSensor = otosSensor;
+        this.localizer = localizer;
         this.speed = speed;
         yPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.y, Constants.getPIDTolerance().y, speed);
         xPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.x, Constants.getPIDTolerance().x, speed);
@@ -39,7 +40,7 @@ public class MovePIDCommand extends Command {
 
     @Override
     public void loop() {
-        position = otosSensor.getPosition();
+        position = localizer.getPosition();
         double xCalc = xPID.calculate(position.x);
         double hCalc = hPID.calculate(position.h);
         double yCalc = yPID.calculate(position.y);
