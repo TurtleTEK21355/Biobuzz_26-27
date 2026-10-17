@@ -19,13 +19,9 @@ apply from: '../build.dependencies.gradle'
 android {
     namespace = 'org.firstinspires.ftc.libcode'
 
-    compileSdk 35
+    compileSdkVersion 30
     defaultConfig {
-        minSdk 24
-    }
-
-    packagingOptions {
-        jniLibs.useLegacyPackaging true
+        minSdkVersion 24
     }
 }
 
