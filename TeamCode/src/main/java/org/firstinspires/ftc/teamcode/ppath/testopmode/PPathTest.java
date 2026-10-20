@@ -15,7 +15,7 @@ import com.pedropathing.paths.Path;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.ppath.Constants;
+import org.firstinspires.ftc.teamcode.ppath.PPConstants;
 
 @Autonomous(name = "PPath Test", group = "Autonomous")
 public class PPathTest extends LinearOpMode {
@@ -45,7 +45,7 @@ public class PPathTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         Scheduler.reset();
-        follower = Constants.create(hardwareMap);
+        follower = PPConstants.create(hardwareMap);
         follower.setPose(start);
         follower.update();
 

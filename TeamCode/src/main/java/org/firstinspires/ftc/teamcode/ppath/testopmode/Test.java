@@ -4,7 +4,7 @@ import com.pedropathing.follower.Follower;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.teamcode.ppath.Constants;
+import org.firstinspires.ftc.teamcode.ppath.PPConstants;
 
 @Autonomous
 public class Test extends OpMode {
@@ -12,7 +12,7 @@ public class Test extends OpMode {
 
     @Override
     public void init() {
-        follower = Constants.create(hardwareMap);
+        follower = PPConstants.create(hardwareMap);
     }
 
     @Override
