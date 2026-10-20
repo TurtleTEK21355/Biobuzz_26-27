@@ -19,23 +19,19 @@ apply from: '../build.dependencies.gradle'
 android {
     namespace = 'org.firstinspires.ftc.libcode'
 
-    compileSdk 35
+    compileSdkVersion 30
     defaultConfig {
-        minSdk 24
-    }
-
-    packagingOptions {
-        jniLibs.useLegacyPackaging true
+        minSdkVersion 24
     }
 }
 
 dependencies {
     api project(':FtcRobotController')
-    testImplementation platform("org.junit:junit-bom:6.0.2")
+    testImplementation platform("org.junit:junit-bom:6.1.3")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 
-    implementation 'com.acmerobotics.dashboard:dashboard:0.5.1'
-    implementation "com.bylazar:fullpanels:1.0.12"
+    implementation 'com.acmerobotics.dashboard:dashboard:0.6.0'
+    implementation "com.bylazar:fullpanels:1.0.18"
 }
