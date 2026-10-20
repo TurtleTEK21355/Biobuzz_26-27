@@ -2,25 +2,28 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
+import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.command.IntakeStartCommand;
 import org.firstinspires.ftc.teamcode.command.IntakeStopCommand;
 import org.firstinspires.ftc.teamcode.command.ShootCommand;
 
 @Configurable
 @Autonomous(name="Red", group = "auto")
-public class AutoBluePathUnPsuedoCodedIGuess {
+public class AutoBluePathUnPsuedoCodedIGuess extends LinearOpMode {
     //Robot Start
 
     double speed;
     MechanumDrive drive;
     Pinpoint localizer;
     public void initalize() {
-        localizer.setPosition(new Pose2D(56, 9, 90));
+        localizer.setPosition(Constants.SHOOT_BLUE_FAR);
     }
 
     //robot.move(56,10,h)
@@ -49,5 +52,10 @@ public class AutoBluePathUnPsuedoCodedIGuess {
 
         //Robot parks
         new MovePIDCommand(new Pose2D(10,10,0), speed, drive, localizer);
+    }
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+
     }
 }

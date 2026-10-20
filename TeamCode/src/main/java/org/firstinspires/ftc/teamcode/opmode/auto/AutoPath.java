@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
 import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 
-public class AutoPath {
+//public class AutoPath {
     //Robot Start
     //robot.move(56,10,h)
     //Robot shoots the loaded pollen
@@ -27,4 +29,4 @@ public class AutoPath {
 
     //Robot parks
     //robot.move(x,y,h?);
-}
+//}

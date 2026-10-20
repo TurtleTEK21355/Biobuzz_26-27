@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
@@ -15,7 +16,7 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 @Configurable
 @Autonomous(name="Red", group = "auto")
-public class AutoPathUnPsuedoCodedIGuess {
+public class AutoPathUnPsuedoCodedIGuess extends LinearOpMode {
     //Robot Start
 
     double speed;
@@ -56,5 +57,10 @@ public class AutoPathUnPsuedoCodedIGuess {
 
         //Robot parks
         new MovePIDCommand(new Pose2D(edge,72,0), speed, drive, localizer);
+    }
+
+    @Override
+    public void runOpMode() throws InterruptedException {
+
     }
 }
