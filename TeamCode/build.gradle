@@ -19,11 +19,6 @@ apply from: '../build.dependencies.gradle'
 android {
     namespace = 'org.firstinspires.ftc.teamcode'
 
-    compileSdk 35
-    defaultConfig {
-        minSdk 24
-    }
-
     packagingOptions {
         jniLibs.useLegacyPackaging true
     }
@@ -31,7 +26,7 @@ android {
 
 dependencies {
     implementation project(':FtcRobotController')
-    testImplementation platform("org.junit:junit-bom:6.0.2")
+    testImplementation platform("org.junit:junit-bom:6.1.3")
 
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
