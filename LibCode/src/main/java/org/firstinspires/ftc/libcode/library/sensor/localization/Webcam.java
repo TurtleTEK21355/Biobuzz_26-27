@@ -5,9 +5,15 @@ import android.util.Size;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.CameraName;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
+import org.firstinspires.ftc.vision.apriltag.AprilTagGameDatabase;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+import org.firstinspires.ftc.vision.apriltag.AprilTagSingleDetection;
 
 import java.util.List;
 
@@ -18,33 +24,36 @@ public class Webcam {
     private List<AprilTagDetection> currentDetections;
 
 
-    public Webcam(CameraName camera) {
+    public Webcam(CameraName camera, double x, double y, double z, double yaw, double pitch, double roll) {
         aprilTag = new AprilTagProcessor.Builder()
 
-                // The following default settings are available to un-comment and edit as needed.
+        {// The following default settings are available to un-comment and edit as needed.
                 //.setDrawAxes(false)
                 //.setDrawCubeProjection(false)
                 //.setDrawTagOutline(true)
-                //.setTagFamily(AprilTagProcessor.TagFamily.TAG_36h11)
-                //.setTagLibrary(AprilTagGameDatabase.getCenterStageTagLibrary())
-                //.setOutputUnits(DistanceUnit.INCH, AngleUnit.DEGREES)
 
                 // == CAMERA CALIBRATION ==
                 // If you do not manually specify calibration parameters, the SDK will attempt
                 // to load a predefined calibration for your camera.
                 //.setLensIntrinsics(578.272, 578.272, 402.145, 221.506)
                 // ... these parameters are fx, fy, cx, cy.
-
+        }
+                .setCameraPose(new Position(DistanceUnit.INCH, x,y,z,0), new YawPitchRollAngles(AngleUnit.DEGREES, yaw, pitch, roll, 0))
+                .setTagFamily(AprilTagProcessor.TagFamily.TAG_36h11)
+                .setTagLibrary(AprilTagGameDatabase.getCurrentGameTagLibrary())
+                .setOutputUnits(DistanceUnit.INCH, AngleUnit.DEGREES)
                 .build();
 
-        // Adjust Image Decimation to trade-off detection-range for detection-rate.
-        // eg: Some typical detection data using a Logitech C920 WebCam
-        // Decimation = 1 ..  Detect 2" Tag from 10 feet away at 10 Frames per second
-        // Decimation = 2 ..  Detect 2" Tag from 6  feet away at 22 Frames per second
-        // Decimation = 3 ..  Detect 2" Tag from 4  feet away at 30 Frames Per Second (default)
-        // Decimation = 3 ..  Detect 5" Tag from 10 feet away at 30 Frames Per Second (default)
-        // Note: Decimation can be changed on-the-fly to adapt during a match.
-        aprilTag.setDecimation(1);
+        {// Adjust Image Decimation to trade-off detection-range for detection-rate.
+            // eg: Some typical detection data using a Logitech C920 WebCam
+            // Decimation = 1 ..  Detect 2" Tag from 10 feet away at 10 Frames per second
+            // Decimation = 2 ..  Detect 2" Tag from 6  feet away at 22 Frames per second
+            // Decimation = 3 ..  Detect 2" Tag from 4  feet away at 30 Frames Per Second (default)
+            // Decimation = 3 ..  Detect 5" Tag from 10 feet away at 30 Frames Per Second (default)
+            // Note: Decimation can be changed on-the-fly to adapt during a match.
+        }
+            aprilTag.setDecimation(1);
+
 
         // Create the vision portal by using a builder.
         VisionPortal.Builder builder = new VisionPortal.Builder();
@@ -76,31 +85,51 @@ public class Webcam {
         visionPortal.setProcessorEnabled(aprilTag, true);
     }
 
-    public String returnAllAprilTagData() {
+    public String returnAllAprilTagDataAsString() {
         StringBuilder outputString = new StringBuilder();
         for (AprilTagDetection detection : currentDetections) {
             // TODO: Update to new vision APIS
-//            if (detection.metadata != null) {
-//                outputString.append("ID ")
-//                        .append(detection.id)
-//                        .append("\nx ")
-//                        .append(detection.ftcPose.x)
-//                        .append("\ny ")
-//                        .append(detection.ftcPose.y)
-//                        .append("\nz ")
-//                        .append(detection.ftcPose.z)
-//                        .append("\npitch ")
-//                        .append(detection.ftcPose.pitch)
-//                        .append("\nroll ")
-//                        .append(detection.ftcPose.roll)
-//                        .append("\nyaw ")
-//                        .append(detection.ftcPose.yaw);
-//            } else {
-//                outputString.append("\nDetection Unknown");
-//            }
-            outputString.append("\n");
+            if ( detection instanceof AprilTagSingleDetection ) {
+                // Create local copy of detection but casting to AprilTagSingleDetection type
+                // so that we can properly interpret the metadata and id information.
+                AprilTagSingleDetection singleDet = (AprilTagSingleDetection) detection;
+                if (singleDet.metadata != null) {
+                    outputString.append("ID ")
+                            .append(singleDet.id)
+                            .append("\nx ")
+                            .append(singleDet.ftcPose.x)
+                            .append("\ny ")
+                            .append(singleDet.ftcPose.y)
+                            .append("\nz ")
+                            .append(singleDet.ftcPose.z)
+                            .append("\npitch ")
+                            .append(singleDet.ftcPose.pitch)
+                            .append("\nroll ")
+                            .append(singleDet.ftcPose.roll)
+                            .append("\nyaw ")
+                            .append(singleDet.ftcPose.yaw);
+                } else {
+                    outputString.append("\nDetection Unknown");
+                }
+                outputString.append("\n");
+            }
         }
         return outputString.toString();
+    }
+
+    public DetectionPosition returnAprilTagPosition() {
+        StringBuilder outputString = new StringBuilder();
+        for (AprilTagDetection detection : currentDetections) {
+            // TODO: Update to new vision APIS
+            if ( detection instanceof AprilTagSingleDetection ) {
+                // Create local copy of detection but casting to AprilTagSingleDetection type
+                // so that we can properly interpret the metadata and id information.
+                AprilTagSingleDetection singleDet = (AprilTagSingleDetection) detection;
+                if (singleDet.metadata != null) {
+                }
+            }
+        }
+        return null;
     }
 
     public void updateDetections() {
