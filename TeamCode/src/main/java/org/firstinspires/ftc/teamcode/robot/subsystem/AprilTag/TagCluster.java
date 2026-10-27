@@ -11,16 +11,16 @@ import java.util.Arrays;
  */
 public enum TagCluster {
     FRONT(
-            new Tag(new Pose2D(-19.2855,-12.8775,90), 38, 30),
-            new Tag(new Pose2D(-15.5355,-12.8775,90), 39, 31),
-            new Tag(new Pose2D(-10.0355,-12.8775,90), 40, 32),
-            new Tag(new Pose2D(-6.2855,-12.8775,90), 41, 33)
+            new Tag(new Pose2D(52.7145,59.1225,90), 38, 30),
+            new Tag(new Pose2D(56.4645,59.1225,90), 39, 31),
+            new Tag(new Pose2D(61.9645,59.1225,90), 40, 32),
+            new Tag(new Pose2D(65.7145,59.1225,90), 41, 33)
     ),
     BACK(
-            new Tag(new Pose2D(-6.2855,12.8775,270), 42, 34),
-            new Tag(new Pose2D(-10.0355,12.8775,270), 43, 35),
-            new Tag(new Pose2D(-15.5355,12.8775,270), 44, 36),
-            new Tag(new Pose2D(-19.2855,12.8775,270), 45, 37)
+            new Tag(new Pose2D(65.7145,84.8775,270), 42, 34),
+            new Tag(new Pose2D(61.9645,84.8775,270), 43, 35),
+            new Tag(new Pose2D(56.4645,84.8775,270), 44, 36),
+            new Tag(new Pose2D(52.7145,84.8775,270), 45, 37)
     );
 
     private final Tag firstTag;
