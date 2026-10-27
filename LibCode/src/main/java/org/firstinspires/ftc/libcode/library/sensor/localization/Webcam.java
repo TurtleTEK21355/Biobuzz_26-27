@@ -7,11 +7,13 @@ import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagGameDatabase;
+import org.firstinspires.ftc.vision.apriltag.AprilTagPoseFtc;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 import org.firstinspires.ftc.vision.apriltag.AprilTagSingleDetection;
 
@@ -117,7 +119,7 @@ public class Webcam {
         return outputString.toString();
     }
 
-    public DetectionPosition returnAprilTagPosition() {
+    public Pose2D robotGlobalPositionFromTag() {
         StringBuilder outputString = new StringBuilder();
         for (AprilTagDetection detection : currentDetections) {
             // TODO: Update to new vision APIS
@@ -126,12 +128,27 @@ public class Webcam {
                 // so that we can properly interpret the metadata and id information.
                 AprilTagSingleDetection singleDet = (AprilTagSingleDetection) detection;
                 if (singleDet.metadata != null) {
+                    Pose3D pose = singleDet.robotPose;
+                    return new Pose2D(pose.getPosition().x, pose.getPosition().y, pose.getOrientation().getYaw());
                 }
             }
         }
         return null;
     }
-
+    public Pose2D robotRelativePositionFromTag() {
+        StringBuilder outputString = new StringBuilder();
+        for (AprilTagDetection detection : currentDetections) {
+            // TODO: Update to new vision APIS
+            if ( detection instanceof AprilTagSingleDetection ) {
+                AprilTagSingleDetection singleDet = (AprilTagSingleDetection) detection;
+                if (singleDet.metadata != null) {
+                    AprilTagPoseFtc pose = singleDet.ftcPose;
+                    return new Pose2D(pose.x, pose.y, pose.yaw);
+                }
+            }
+        }
+        return null;
+    }
     public void updateDetections() {
         currentDetections = aprilTag.getDetections();
     }

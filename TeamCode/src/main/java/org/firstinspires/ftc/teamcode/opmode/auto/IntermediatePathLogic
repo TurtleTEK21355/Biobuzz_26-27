@@ -1,0 +1,14 @@
+1. Calibrate position with Limelight
+    i. set position to position from AprilTag
+    ii. otherwise assume a default position
+2. Shoot 4 pollen
+    i. startup flywheel
+    ii. open gate
+    iii. activate thing that pushes pollen into outtake?
+3. Path to pick up 4 corner pollen
+    i. (59, 9, 90)
+    ii. (23, 9, 180) [(45, 17)]
+    iii. (8, 9, 180)
+4. Path to park
+    i. (8, 9, 180)
+    ii. (9, 95, 0) [(36, 43)]

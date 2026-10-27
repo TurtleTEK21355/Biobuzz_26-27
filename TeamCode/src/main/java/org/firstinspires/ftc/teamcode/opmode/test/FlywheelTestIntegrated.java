@@ -8,11 +8,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
-import org.firstinspires.ftc.teamcode.robot.Prototype;
+import org.firstinspires.ftc.teamcode.robot.Sting;
 
 @TeleOp(name = "Flywheel Test")
 public class FlywheelTestIntegrated extends LinearOpMode {
-    Prototype robot;
+    Sting robot;
 
     @Override
     public void runOpMode() {
@@ -20,7 +20,7 @@ public class FlywheelTestIntegrated extends LinearOpMode {
         telemetry = new MultipleTelemetry(telemetry, PanelsTelemetry.INSTANCE.getFtcTelemetry());
         TelemetryPasser.telemetry = telemetry;
 
-        robot = Prototype.build(hardwareMap);
+        robot = Sting.build(hardwareMap);
         telemetry.update();
 
         double velocityPollen = 0;
