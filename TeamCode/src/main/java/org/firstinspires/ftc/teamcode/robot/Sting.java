@@ -4,6 +4,7 @@ import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.IMU;
 
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
@@ -13,6 +14,8 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.CameraName;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Flywheel;
 
 public class Sting {
+
+    private IMU imu;
     private Flywheel flywheelNectar;
     private Flywheel flywheelPollen;
     private MechanumDrive drivetrain;
@@ -21,7 +24,8 @@ public class Sting {
     private LimelightColorBlob limelight;
 
 
-    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight) {
+    public Sting(IMU imu, Flywheel flywheelPollen, Flywheel flywheelNectar, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight) {
+        this.imu = imu;
         this.flywheelNectar = flywheelNectar;
         this.flywheelPollen = flywheelPollen;
         this.drivetrain = drivetrain;
@@ -33,6 +37,7 @@ public class Sting {
     public void setFlywheelPollenVelocity(double velocity) { flywheelPollen.setVelocity(velocity); }
     public void setIntakePower(double power) { intake.setPower(power); }
     public MechanumDrive getDrivetrain() { return drivetrain; }
+    public IMU getIMU() { return imu; }
 
     public void flywheelsTelemetry(){
         TelemetryPasser.telemetry.addLine("Right Flywheel:");
@@ -57,6 +62,7 @@ public class Sting {
      */
     public static Sting build(HardwareMap hardwareMap) {
         return new Sting(
+            hardwareMap.get(IMU.class, StingHardwareName.IMU.getName()),
             new Flywheel(hardwareMap.get(DcMotorEx.class, StingHardwareName.FLYWHEELPOLLEN.getName())),
             new Flywheel(hardwareMap.get(DcMotorEx.class, StingHardwareName.FLYWHEELNECTAR.getName())),
             new MechanumDrive(

@@ -1,0 +1,21 @@
+Variables:
+- Idle Flywheel RPMs
+- Active Flywheel RPMs
+- Rotation PID vars
+-
+
+Controls:
+- Outtake:
+    Active:
+    - Activate flywheels (easy set velocity)
+    - Open gates (easy set position)
+    Inactive:
+    - Idle flywheels
+    - Close gates
+- Intake: start/stop motor ez
+- Drivetrain: input->output ez
+- Flower Mechanism
+    - IDK how it activates yet; probably a simple motor or servo thing
+Passive:
+- Rotate towards hive cell while in shoot mode (manipulate rotate value while in shoot mode)
+-
