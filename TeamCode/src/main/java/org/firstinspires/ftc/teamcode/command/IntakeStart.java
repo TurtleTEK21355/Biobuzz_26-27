@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.command;
 
 import org.firstinspires.ftc.libcode.library.commandsinternal.Command;
 
-public class IntakeStopCommand extends Command {
+public class IntakeStart extends Command {
     @Override
     public boolean isCompleted() {
         return false;

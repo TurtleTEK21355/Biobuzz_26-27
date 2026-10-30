@@ -8,10 +8,9 @@ import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
-import org.firstinspires.ftc.teamcode.command.IntakeStartCommand;
-import org.firstinspires.ftc.teamcode.command.IntakeStopCommand;
-import org.firstinspires.ftc.teamcode.command.SetFlywheelVelocity;
-import org.firstinspires.ftc.teamcode.command.ShootCommand;
+import org.firstinspires.ftc.teamcode.command.IntakeStart;
+import org.firstinspires.ftc.teamcode.command.IntakeStop;
+import org.firstinspires.ftc.teamcode.command.Shoot;
 import org.firstinspires.ftc.teamcode.Constants;
 
 @Configurable
@@ -36,7 +35,7 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearOpMode {
         double flowerY = 144; //guess
         double shootY = 120;
         //Robot shoots the loaded pollen
-        new ShootCommand();
+        new Shoot();
 
         //Robot picks up pollen from the garden
         new MovePIDCommand(new Pose2D(edge,startY,0), speed, drive, localizer);
@@ -45,15 +44,15 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearOpMode {
         new MovePIDCommand(new Pose2D(startX,shootY,270), speed, drive, localizer);
 
         //Robot shoots the 4 pollen
-        new ShootCommand();
+        new Shoot();
 
         //Robot intakes pollen from closest flower
         new MovePIDCommand(new Pose2D(flowerX,flowerY,0), speed, drive, localizer);
-        new IntakeStartCommand();
-        new IntakeStopCommand();
+        new IntakeStart();
+        new IntakeStop();
         new MovePIDCommand(new Pose2D(startX,shootY,0), speed, drive, localizer);
         //Robot shoots the 4 pollen
-        new ShootCommand();
+        new Shoot();
 
         //Robot parks
         new MovePIDCommand(new Pose2D(edge,72,0), speed, drive, localizer);

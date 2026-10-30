@@ -4,20 +4,13 @@ import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 
 public class Constants {
 
-    public final static Pose2D START_RED_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
-    public final static Pose2D START_BLUE_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
-    public final static Pose2D START_BLUE_CLOSE = new Pose2D(1234567890, 1234567890, 1234567890);
-    public final static Pose2D START_RED_CLOSE = new Pose2D(1234567890, 1234567890, 1234567890);
-    public final static Pose2D GARDEN_RED = new Pose2D(10, 10, 180);
-
-    public final static Pose2D GARDEN_BLUE = new Pose2D(134, 134, 180);
-
-    public final static Pose2D SHOOT_RED_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
-
-    public final static Pose2D SHOOT_BLUE_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
-
-    public final static Pose2D FLOWER_RED_EDGE = new Pose2D(1234567890, 1234567890, 1234567890);
-
-    public final static Pose2D FLOWER_BLUE_EDGE = new Pose2D(1234567890, 1234567890, 1234567890);
-    public final static Pose2D FLOWER_RED_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
+    public final static Pose2D START_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
+    public final static Pose2D START_CLOSE = new Pose2D(1234567890, 1234567890, 1234567890);
+    public final static Pose2D GARDEN = new Pose2D(0, 0, 180);
+    public final static Pose2D SHOOT_FAR = new Pose2D(1234567890, 1234567890, 1234567890);
+    public final static Pose2D FLOWER_EDGE = new Pose2D(1234567890, 1234567890, 1234567890);
+    public final static double shootingVelocityPollen = 0;
+    public final static double shootingVelocityNectar = 0;
+    public final static double openGatePosition = 0;
+    public final static double closeGatePosition = 0;
 }
