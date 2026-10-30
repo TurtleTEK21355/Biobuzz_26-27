@@ -8,10 +8,6 @@ import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
-import org.firstinspires.ftc.teamcode.Constants;
-import org.firstinspires.ftc.teamcode.command.IntakeStartCommand;
-import org.firstinspires.ftc.teamcode.command.IntakeStopCommand;
-import org.firstinspires.ftc.teamcode.command.ShootCommand;
 
 @Configurable
 @Autonomous(name="Red", group = "auto")
