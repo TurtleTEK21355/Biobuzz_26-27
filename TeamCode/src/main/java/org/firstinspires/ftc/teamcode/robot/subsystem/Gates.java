@@ -8,24 +8,23 @@ public class Gates {
     Servo pollen;
     Servo nectar;
     boolean isOpen;
-    public Gates(Servo pollen, Servo nectar){
+    public Gates(Servo pollen, Servo nectar) {
         this.pollen = pollen;
         this.nectar = nectar;
     }
 
-    public void  openGates(){
-        pollen.setPosition(Constants.openGatePosition);
-        nectar.setPosition(Constants.openGatePosition);
+    public void open() {
+        pollen.setPosition(Constants.gateOpenPosition);
+        nectar.setPosition(Constants.gateOpenPosition);
         isOpen=true;
     }
-    public void closeGates(){
-        pollen.setPosition(Constants.closeGatePosition);
-        nectar.setPosition(Constants.closeGatePosition);
+    public void close() {
+        pollen.setPosition(Constants.gateClosePosition);
+        nectar.setPosition(Constants.gateClosePosition);
         isOpen=false;
     }
-    public void toggleGate(){
-        if (isOpen) {
-            closeGates(); isOpen=false;}
-        else        { openGates(); isOpen=true ;}
+    public void toggle() {
+        if (isOpen) {close(); isOpen=false;}
+        else        {open();  isOpen=true;}
     }
 }

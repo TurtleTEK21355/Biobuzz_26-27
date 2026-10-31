@@ -51,10 +51,12 @@ public class Sting {
     public Gates getGates() { return gates; }
 
     public void flywheelsTelemetry(){
-        TelemetryPasser.telemetry.addLine("Right Flywheel:");
+        TelemetryPasser.telemetry.addLine("\nRight Flywheel:");
         flywheelPollen.telemetry();
         TelemetryPasser.telemetry.addLine("\nLeft Flywheel:");
         flywheelNectar.telemetry();
+        TelemetryPasser.telemetry.addLine("\n");
+
     }
 
     public void webcamTelemetry(){

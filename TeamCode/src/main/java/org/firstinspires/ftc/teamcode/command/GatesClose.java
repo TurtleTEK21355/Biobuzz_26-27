@@ -9,7 +9,7 @@ public class GatesClose extends Command {
     public GatesClose(Gates gates) { this.gates = gates; }
 
     @Override
-    public void init() { gates.closeGates(); }
+    public void init() { gates.close(); }
 
     @Override
     public boolean isCompleted() { return (true); }
