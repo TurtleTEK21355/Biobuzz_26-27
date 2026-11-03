@@ -32,8 +32,8 @@ public class JustShoot extends LinearOpMode {
         new TimerCommand(4000);
         new GatesClose(robot.getGates());
         new OuttakeWheelsStop(null);
-        new FlywheelSetVelocity(robot.getFlywheelNectar(), 0);
-        new FlywheelSetVelocity(robot.getFlywheelNectar(), 0);
+        new FlywheelSetVelocity(robot.getFlywheelNectar(), 1000);
+        new FlywheelSetVelocity(robot.getFlywheelNectar(), 1000);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class AutoBluePathUnPsuedoCodedIGuess extends LinearOpMode {
     MechanumDrive drive;
     Pinpoint localizer;
     public void initalize() {
-        localizer.setPosition(Constants.SHOOT_BLUE_FAR);
+        localizer.setPosition(new Pose2D(56, 9, 90));
     }
 
     //robot.move(56,10,h)
