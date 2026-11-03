@@ -14,10 +14,12 @@ public class JustPark extends LinearOpMode {
     //Robot Start
 
     Sting robot;
-    public void initalize() { robot.build(hardwareMap); robot.getPinpoint().resetPosition();}
+    public void initalize() {
+        robot.build(hardwareMap);
+        robot.getPinpoint().setPosition(new Pose2D(9, 84, 9));
+    }
 
     public void commands () {
-        new MovePIDHoldTimeCommand(new Pose2D(9,84,0), 2000, 0.6, robot.getDrivetrain(), robot.getPinpoint());
         new MovePIDHoldTimeCommand(new Pose2D(12,88,0), 2000, 0.6, robot.getDrivetrain(), robot.getPinpoint());
     }
 
