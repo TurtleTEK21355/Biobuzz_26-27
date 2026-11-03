@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.libcode.examples.command.TimerCommand;
@@ -14,10 +15,12 @@ import org.firstinspires.ftc.teamcode.command.OuttakeWheelsStop;
 import org.firstinspires.ftc.teamcode.robot.Sting;
 
 @Configurable
+@Disabled
 @Autonomous(name= "Should Literally Just Shoot and if it Doesn't I'll cry", group = "auto")
 public class JustShoot extends LinearOpMode {
     //Robot Start
 
+    // IS DISABLED
     Sting robot;
     public void initalize() { robot.build(hardwareMap); robot.getPinpoint().resetPosition();}
 

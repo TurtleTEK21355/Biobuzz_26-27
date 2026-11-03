@@ -93,7 +93,6 @@ public class Sting {
     }
 
     public enum StingHardwareName {
-        IMU("imu"),
         FLYWHEELPOLLEN("flywheel_pollen"),
         FLYWHEELNECTAR("flywheel_nectar"),
         GATEPOLLEN("gate_pollen"),
