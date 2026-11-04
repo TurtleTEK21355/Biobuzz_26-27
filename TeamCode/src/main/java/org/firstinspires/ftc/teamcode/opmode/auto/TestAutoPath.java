@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
-import com.bylazar.configurables.annotations.Configurable;
+//import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -9,7 +9,7 @@ import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
 
-@Configurable
+//@Configurable
 @Autonomous(name="Red", group = "auto")
 public class TestAutoPath extends LinearOpMode {
     //Robot Start

@@ -1,8 +1,8 @@
 package org.firstinspires.ftc.libcode.examples.opmode.teleop;
 
-import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-import com.bylazar.gamepad.PanelsGamepad;
-import com.bylazar.telemetry.PanelsTelemetry;
+//import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+//import com.bylazar.gamepad.PanelsGamepad;
+//import com.bylazar.telemetry.PanelsTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -19,8 +19,8 @@ public class ProgrammingChassisTest extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        PanelsGamepad virtualGamepad = PanelsGamepad.INSTANCE;
-        telemetry = new MultipleTelemetry(telemetry, PanelsTelemetry.INSTANCE.getFtcTelemetry());
+//        PanelsGamepad virtualGamepad = PanelsGamepad.INSTANCE;
+//        telemetry = new MultipleTelemetry(telemetry, PanelsTelemetry.INSTANCE.getFtcTelemetry());
         TelemetryPasser.telemetry = telemetry;
 
         robot = ProgrammingChassis.build(hardwareMap);
@@ -32,8 +32,8 @@ public class ProgrammingChassisTest extends LinearOpMode {
 
         waitForStart();
         while(opModeIsActive()) {
-            Gamepad gamepad1 = virtualGamepad.getFirstManager().asCombinedFTCGamepad(super.gamepad1);
-            Gamepad gamepad2 = virtualGamepad.getFirstManager().asCombinedFTCGamepad(super.gamepad2);
+//            Gamepad gamepad1 = virtualGamepad.getFirstManager().asCombinedFTCGamepad(super.gamepad1);
+//            Gamepad gamepad2 = virtualGamepad.getFirstManager().asCombinedFTCGamepad(super.gamepad2);
 
             robot.getDrivetrain().control(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
             robot.getPinpoint().positionTelemetry();

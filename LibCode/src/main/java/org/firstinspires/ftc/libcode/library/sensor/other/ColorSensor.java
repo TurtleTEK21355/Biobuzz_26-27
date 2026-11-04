@@ -2,7 +2,7 @@ package org.firstinspires.ftc.libcode.library.sensor.other;
 
 import android.graphics.Color;
 
-import com.bylazar.configurables.annotations.Configurable;
+//import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
@@ -11,7 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.libcode.library.internal.HSV;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 
-@Configurable
+//@Configurable
 public class ColorSensor {
     /*
         Put the following into opMode to initialize a color sensor (replace sensor_color with name for sensor in config, and replace colorSensor with recognizable name):

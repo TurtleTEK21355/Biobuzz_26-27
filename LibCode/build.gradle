@@ -32,6 +32,6 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
 
-    implementation 'com.acmerobotics.dashboard:dashboard:0.6.0'
-    implementation "com.bylazar:fullpanels:1.0.18"
+//    implementation 'com.acmerobotics.dashboard:dashboard:0.6.0'
+//    implementation "com.bylazar:fullpanels:1.0.18"
 }

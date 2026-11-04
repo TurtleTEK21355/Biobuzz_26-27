@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.libcode.examples.robot;
 
-import com.acmerobotics.dashboard.config.Config;
-import com.bylazar.configurables.annotations.Configurable;
+//import com.acmerobotics.dashboard.config.Config;
+//import com.bylazar.configurables.annotations.Configurable;
 
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.pid.PIDConstants;
@@ -36,8 +36,8 @@ import org.firstinspires.ftc.libcode.library.internal.pid.PIDConstants;
  * @since 03/15/2026
  * @version 0.1.0 (04/02/2026)
  */
-@Config
-@Configurable
+//@Config
+//@Configurable
 public class Constants {
     public static double drivetrainExponentIndex = 3;
     public static double drivetrainMinimumMoveableSpeed = 0.25;

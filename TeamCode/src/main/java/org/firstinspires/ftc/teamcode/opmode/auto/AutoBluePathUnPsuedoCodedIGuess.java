@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmode.auto;
 
-import com.bylazar.configurables.annotations.Configurable;
+//import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.command.IntakeStart;
 import org.firstinspires.ftc.teamcode.command.IntakeStop;
 import org.firstinspires.ftc.teamcode.command.Shoot;
 
-@Configurable
-@Autonomous(name="Red", group = "auto")
+//@Configurable
+@Autonomous(name="Blue", group = "auto")
 public class AutoBluePathUnPsuedoCodedIGuess extends LinearOpMode {
     //Robot Start
 

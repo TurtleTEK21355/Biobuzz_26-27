@@ -10,6 +10,7 @@ public abstract class LinearCommandOpMode extends LinearOpMode {
     @Override
     public void runOpMode() {
         initialize(); //where you put in commands and configuration
+        waitForStart();
         while (!commandScheduler.isCompleted() && opModeIsActive()) {
             commandScheduler.loop();
             TelemetryPasser.telemetry.update();
