@@ -15,8 +15,8 @@ public class MovePIDHoldTimeCommand extends MovePIDCommand{
 
 
 
-    public MovePIDHoldTimeCommand(Pose2D target, int holdTime, double speed, MechanumDrive drivetrain, Localizer localizer) {
-        super(target, speed, drivetrain, localizer);
+    public MovePIDHoldTimeCommand(Pose2D target, int holdTime, double speed, MechanumDrive drivetrain, Localizer localizer, Pose2D tolerance) {
+        super(target, speed, drivetrain, localizer, tolerance);
         this.holdTime = holdTime;
     }
 

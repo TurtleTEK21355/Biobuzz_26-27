@@ -29,13 +29,13 @@ public class MovePIDCommand extends Command {
      * @param drivetrain
      * @param localizer
      */
-    public MovePIDCommand(Pose2D target, double speed, MechanumDrive drivetrain, Localizer localizer) {
+    public MovePIDCommand(Pose2D target, double speed, MechanumDrive drivetrain, Localizer localizer, Pose2D tolerance) {
         this.drivetrain = drivetrain;
         this.localizer = localizer;
         this.speed = speed;
-        yPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.y, Constants.getPIDTolerance().y, speed);
-        xPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.x, Constants.getPIDTolerance().x, speed);
-        hPID = new PIDControllerHeading(Constants.getAngularPIDConstants(), target.h, Constants.getPIDTolerance().h, speed);
+        yPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.y, tolerance.y, speed);
+        xPID = new PIDControllerSpeedLimit(Constants.getLinearPIDConstants(), target.x, tolerance.x, speed);
+        hPID = new PIDControllerHeading(Constants.getAngularPIDConstants(), target.h, tolerance.h, speed);
     }
 
     @Override

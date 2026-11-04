@@ -64,8 +64,8 @@ public class Constants {
         return new PIDConstants(drivetrainAngularKp, drivetrainAngularKi, drivetrainAngularKd);
     }
 
-    public static double pidToleranceX = 2;
-    public static double pidToleranceY = 2;
+    public static double pidToleranceX = 1.5;
+    public static double pidToleranceY = 1.5;
     public static double pidToleranceH = 0.2;
     public static Pose2D getPIDTolerance(){
         return new Pose2D(pidToleranceX, pidToleranceY, pidToleranceH);
