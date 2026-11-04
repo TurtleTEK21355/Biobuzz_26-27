@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
 import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
+import org.firstinspires.ftc.libcode.library.commandsinternal.LinearCommandOpMode;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
 import org.firstinspires.ftc.teamcode.command.IntakeStart;
@@ -15,15 +16,18 @@ import org.firstinspires.ftc.teamcode.Constants;
 
 //@Configurable
 @Autonomous(name="Yeah", group = "auto")
-public class AutoPathUnPsuedoCodedIGuess extends LinearOpMode {
+public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
     //Robot Start
 
-    double speed;
+    double speed = 0.5;
     MechanumDrive drive;
     Pinpoint localizer;
-    public void initalize() {
+    @Override
+    public void initialize() {
         localizer.setPosition(new Pose2D(56, 9, 90));
     }
+
+
 
     //robot.move(56,10,h)
     public void commands () {
@@ -59,7 +63,11 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearOpMode {
     }
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
+        super.runOpMode();
+    }
 
+    @Override
+    public void cleanup() {
     }
 }
