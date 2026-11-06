@@ -14,6 +14,7 @@ import org.firstinspires.ftc.teamcode.robot.Sting;
 public class MainTeleOp extends OpMode {
     protected Sting robot;
     private final CommandScheduler commandScheduler = new CommandScheduler();
+    Controls controls;
 
 
     @Override
@@ -26,7 +27,7 @@ public class MainTeleOp extends OpMode {
 
     @Override
     public void loop() {
-
+        controls.feed(gamepad1, gamepad2);
         if (gamepad1.back) {
             robot.getPinpoint().resetPosition();
         }

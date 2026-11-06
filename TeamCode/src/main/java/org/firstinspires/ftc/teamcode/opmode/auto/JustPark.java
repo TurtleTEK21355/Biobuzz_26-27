@@ -21,8 +21,9 @@ public class JustPark extends LinearCommandOpMode {
     public void initialize() {
         robot = Sting.build(hardwareMap);
         robot.getPinpoint().setPosition(new Pose2D(9, 84, 0));
+        commands();
     }
-
+    
     public void commands () {
         addCommand(new MovePIDCommand(new Pose2D(12,88,0), 0.6, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
     }
