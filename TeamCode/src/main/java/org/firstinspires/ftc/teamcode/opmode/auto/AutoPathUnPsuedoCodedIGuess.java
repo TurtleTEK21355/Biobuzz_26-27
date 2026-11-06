@@ -37,24 +37,23 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
         //new Shoot();
 
         //Robot picks up pollen from the garden
-        new MovePIDCommand(new Pose2D(edge,startY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance);
+        addCommand(new MovePIDCommand(new Pose2D(edge,startY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
 
         //Robot moves to the other side  
-        new MovePIDCommand(new Pose2D(startX,shootY,270), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance);
+        addCommand(new MovePIDCommand(new Pose2D(startX,shootY,270), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
 
         //Robot shoots the 4 pollen
         //new Shoot();
-        new TimerCommand(3000);
         //Robot intakes pollen from closest flower
-        new MovePIDCommand(new Pose2D(flowerX,flowerY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance);
+        addCommand(new MovePIDCommand(new Pose2D(flowerX,flowerY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
         //new IntakeStart();
         //   new IntakeStop();
-        new MovePIDCommand(new Pose2D(startX,shootY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance);
+        addCommand(new MovePIDCommand(new Pose2D(startX,shootY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
         //Robot shoots the 4 pollen
         //new Shoot();
 
         //Robot parks
-        new MovePIDCommand(new Pose2D(edge,72,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance);
+        addCommand(new MovePIDCommand(new Pose2D(edge,72,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
     }
 
     @Override
