@@ -20,6 +20,7 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
     public void initialize() {
         robot = Sting.build(hardwareMap);
         robot.getPinpoint().setPosition(new Pose2D(56, 9, 90));
+        commands();
     }
 
 
@@ -65,3 +66,4 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
     public void cleanup() {
     }
 }
+00
