@@ -2,18 +2,10 @@ package org.firstinspires.ftc.teamcode.opmode.auto;
 
 //import com.bylazar.configurables.annotations.Configurable;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.libcode.examples.command.MovePIDCommand;
-import org.firstinspires.ftc.libcode.examples.command.TimerCommand;
-import org.firstinspires.ftc.libcode.library.actuator.drivetrain.MechanumDrive;
+import org.firstinspires.ftc.libcode.examples.command.*;
 import org.firstinspires.ftc.libcode.library.commandsinternal.LinearCommandOpMode;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
-import org.firstinspires.ftc.libcode.library.sensor.localization.Pinpoint;
-import org.firstinspires.ftc.teamcode.command.IntakeStart;
-import org.firstinspires.ftc.teamcode.command.IntakeStop;
-import org.firstinspires.ftc.teamcode.command.Shoot;
-import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.robot.Sting;
 
 //@Configurable
