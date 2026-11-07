@@ -66,7 +66,6 @@ public class GoBildaPinpoint extends I2cDeviceSynchDevice<I2cDeviceSynchSimple> 
     private static final float goBILDA_SWINGARM_POD = 13.26291192f; //ticks-per-mm for the goBILDA Swingarm Pod
     private static final float goBILDA_4_BAR_POD    = 19.89436789f; //ticks-per-mm for the goBILDA 4-Bar Pod
     private static final double inchesToMM = 25.4;
-
     //i2c address of the device
     public static final byte DEFAULT_ADDRESS = 0x31;
 
@@ -495,7 +494,7 @@ public class GoBildaPinpoint extends I2cDeviceSynchDevice<I2cDeviceSynchSimple> 
     public Pose2D setPosition(Pose2D pos){
         writeByteArray(Register.X_POSITION,(floatToByteArray((float) (pos.x*inchesToMM), ByteOrder.LITTLE_ENDIAN)));
         writeByteArray(Register.Y_POSITION,(floatToByteArray((float) (pos.y*inchesToMM),ByteOrder.LITTLE_ENDIAN)));
-        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) (pos.h*inchesToMM),ByteOrder.LITTLE_ENDIAN)));
+        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) (Math.toRadians(pos.h)),ByteOrder.LITTLE_ENDIAN)));
         return pos;
     }
 
