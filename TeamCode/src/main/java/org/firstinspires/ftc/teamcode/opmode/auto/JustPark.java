@@ -23,9 +23,10 @@ public class JustPark extends LinearCommandOpMode {
         robot.getPinpoint().setPosition(new Pose2D(9, 84, 0));
         commands();
     }
-    
+
     public void commands () {
-        addCommand(new MovePIDCommand(new Pose2D(12,88,0), 0.6, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
+
+        addCommand(new MovePIDCommand(new Pose2D(4,4,0), 1, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
     }
 
     @Override

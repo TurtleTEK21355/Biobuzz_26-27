@@ -6,13 +6,14 @@ import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 
 public abstract class LinearCommandOpMode extends LinearOpMode {
     private CommandScheduler commandScheduler = new CommandScheduler();
-
     @Override
     public void runOpMode() {
+        TelemetryPasser.telemetry = telemetry;
         initialize(); //where you put in commands and configuration
         waitForStart();
         while (!commandScheduler.isCompleted() && opModeIsActive()) {
             commandScheduler.loop();
+            TelemetryPasser.telemetry.addLine(commandScheduler.getTelemetry());
             TelemetryPasser.telemetry.update();
         }
         cleanup(); //for blackboard or resetting of odometry

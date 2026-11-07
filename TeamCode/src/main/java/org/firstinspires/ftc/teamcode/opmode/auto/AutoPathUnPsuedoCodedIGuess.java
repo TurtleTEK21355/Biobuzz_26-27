@@ -66,4 +66,3 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
     public void cleanup() {
     }
 }
-00

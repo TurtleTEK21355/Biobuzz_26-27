@@ -57,7 +57,7 @@ public class Constants {
         return new PIDConstants(drivetrainLinearKp, drivetrainLinearKi, drivetrainLinearKd);
     }
 
-    public static double drivetrainAngularKp = 0;
+    public static double drivetrainAngularKp = 0.05;
     public static double drivetrainAngularKi = 0;
     public static double drivetrainAngularKd = 0;
     public static PIDConstants getAngularPIDConstants() {
