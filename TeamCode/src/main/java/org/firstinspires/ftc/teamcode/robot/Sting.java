@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.robot;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -23,20 +24,26 @@ public class Sting {
     private Gates gates;
     private MechanumDrive drivetrain;
     private DcMotor intake;
+    private DcMotor augur;
     private Webcam webcam;
     private LimelightColorBlob limelight;
     private Pinpoint pinpoint;
 
 
-    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight, Pinpoint pinpoint) {
+    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, DcMotor augur, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight, Pinpoint pinpoint) {
         this.flywheelNectar = flywheelNectar;
         this.flywheelPollen = flywheelPollen;
         this.gates = gates;
+        this.augur = augur;
         this.drivetrain = drivetrain;
         this.intake = intake;
         this.webcam = webcam;
         this.limelight = limelight;
         this.pinpoint = pinpoint;
+        flywheelPollen.setDirection(DcMotorSimple.Direction.REVERSE);
+        pinpoint.setPodDirections(GoBildaPinpoint.EncoderDirection.REVERSED, GoBildaPinpoint.EncoderDirection.FORWARD);
+        augur.setDirection(DcMotorSimple.Direction.REVERSE);
+
     }
     public void setFlywheelNectarVelocity(double velocity) { flywheelNectar.setVelocity(velocity); }
     public void setFlywheelPollenVelocity(double velocity) { flywheelPollen.setVelocity(velocity); }
@@ -49,6 +56,8 @@ public class Sting {
     public LimelightColorBlob getLimelight() { return limelight; }
     public Pinpoint getPinpoint() { return pinpoint; }
     public Gates getGates() { return gates; }
+    public DcMotor getIntake() { return intake; }
+    public DcMotor getAugur() { return augur; }
 
     public void flywheelsTelemetry(){
         TelemetryPasser.telemetry.addLine("\nRight Flywheel:");
@@ -80,6 +89,7 @@ public class Sting {
             new Gates(
                     hardwareMap.get(Servo.class, StingHardwareName.GATEPOLLEN.getName()),
                     hardwareMap.get(Servo.class, StingHardwareName.GATENECTAR.getName())),
+            hardwareMap.get(DcMotor.class, StingHardwareName.AUGUR.getName()),
             new MechanumDrive(
                 hardwareMap.get(DcMotor.class, StingHardwareName.FRONTLEFTDT.getName()),
                 hardwareMap.get(DcMotor.class, StingHardwareName.FRONTRIGHTDT.getName()),
@@ -97,6 +107,7 @@ public class Sting {
         FLYWHEELNECTAR("flywheel_nectar"),
         GATEPOLLEN("gate_pollen"),
         GATENECTAR("gate_nectar"),
+        AUGUR("augur"),
         BACKLEFTDT("lb"),
         BACKRIGHTDT("rb"),
         FRONTLEFTDT("lf"),

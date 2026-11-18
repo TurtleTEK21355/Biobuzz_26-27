@@ -5,8 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.libcode.examples.command.SimultaneousAllCommand;
+import org.firstinspires.ftc.libcode.library.commandsinternal.Command;
 import org.firstinspires.ftc.libcode.library.commandsinternal.CommandScheduler;
+import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
+import org.firstinspires.ftc.teamcode.command.FlywheelSetVelocity;
+import org.firstinspires.ftc.teamcode.command.GatesOpen;
 import org.firstinspires.ftc.teamcode.robot.Sting;
 
 //@Configurable
@@ -14,7 +19,7 @@ import org.firstinspires.ftc.teamcode.robot.Sting;
 public class MainTeleOp extends OpMode {
     protected Sting robot;
     private final CommandScheduler commandScheduler = new CommandScheduler();
-    Controls controls;
+
 
 
     @Override
@@ -22,23 +27,38 @@ public class MainTeleOp extends OpMode {
         TelemetryPasser.telemetry = telemetry;
         robot = Sting.build(hardwareMap);
 
-        telemetry.addLine("Controls here");
+        telemetry.addLine("Controls here:");
+        telemetry.addLine("\nDrivetrain: Joysticks");
+        telemetry.addLine("Intake: Left Bumper");
+        telemetry.addLine("Shoot: Right Bumper");
+        telemetry.update();
     }
 
     @Override
     public void loop() {
-        controls.feed(gamepad1, gamepad2);
-        if (gamepad1.back) {
-            robot.getPinpoint().resetPosition();
-        }
         telemetry.addData("Position (Pinpoint)", robot.getPinpoint().getPosition());
+        telemetry.addLine("\nFlywheel Velocities:");
+        telemetry.addData("Pollen:", robot.getFlywheelPollen().getVelocity());
+        telemetry.addData("Nectar:", robot.getFlywheelNectar().getVelocity());
 
-        commandScheduler.loop();
-        telemetry.addLine(commandScheduler.getTelemetry());
-        if (commandScheduler.isCompleted()) { //these things only run while the robot is not shooting
 
+        robot.getDrivetrain().fcControl(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.getPinpoint().getPosition().h);
+
+        if (gamepad1.left_bumper) robot.getIntake().setPower(0.8);
+        else robot.getIntake().setPower(0);
+
+        if (gamepad1.right_bumper) {
+            robot.getFlywheelNectar().setVelocity(300);
+            robot.getFlywheelPollen().setVelocity(300);
+            if (robot.getFlywheelNectar().getVelocity()>280 && robot.getFlywheelPollen().getVelocity()>280)
+                robot.getGates().open();
+        } else {
+            robot.getFlywheelNectar().setVelocity(0);
+            robot.getFlywheelPollen().setVelocity(0);
+            robot.getGates().close();
         }
-        telemetry.update();
+        robot.getAugur().setPower(gamepad1.left_trigger/2.5);
 
+        telemetry.update();
     }
 }

@@ -5,14 +5,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Constants;
 
 public class Gates {
-    Servo pollen;
-    Servo nectar;
-    boolean isOpen;
+    private Servo pollen;
+    private Servo nectar;
+
+    private boolean isOpen;
     public Gates(Servo pollen, Servo nectar) {
         this.pollen = pollen;
         this.nectar = nectar;
+        pollen.setDirection(Servo.Direction.REVERSE);
     }
 
+    public boolean isOpen() {
+        return isOpen;
+    }
     public void open() {
         pollen.setPosition(Constants.gateOpenPosition);
         nectar.setPosition(Constants.gateOpenPosition);

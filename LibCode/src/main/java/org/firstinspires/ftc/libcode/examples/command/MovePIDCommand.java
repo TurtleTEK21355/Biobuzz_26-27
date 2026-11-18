@@ -41,10 +41,12 @@ public class MovePIDCommand extends Command {
     @Override
     public void loop() {
         position = localizer.getPosition();
-        double xCalc = xPID.calculate(position.x);
-        double hCalc = hPID.calculate(position.h);
-        double yCalc = yPID.calculate(position.y);
-        drivetrain.fcControl(yCalc, xCalc, hCalc, position.h);
+        if (speed != 0) {
+            double xCalc = xPID.calculate(position.x);
+            double hCalc = hPID.calculate(position.h);
+            double yCalc = yPID.calculate(position.y);
+            drivetrain.fcControl(yCalc, xCalc, hCalc, position.h);
+        }
 
     }
 
@@ -52,10 +54,13 @@ public class MovePIDCommand extends Command {
     public String telemetry() {
         TelemetryString string = new TelemetryString();
 
-        string.addData("yPID at Position ", yPID.atTarget(position.y));
-        string.addData("xPID at Position ", xPID.atTarget(position.x));
-        string.addData("hPID at Position ", hPID.atTarget(position.h));
-        string.addData("Robot Position ", position);
+        string.addData("yCalc: ", yPID.calculate(position.y));
+        string.addData("xCalc:  ", xPID.calculate(position.x));
+        string.addData("hCalc:  ", hPID.calculate(position.h));
+        string.addData("yPID at Position: ", yPID.atTarget(position.y));
+        string.addData("xPID at Position: ", xPID.atTarget(position.x));
+        string.addData("hPID at Position: ", hPID.atTarget(position.h));
+        string.addData("Robot Position: ", position);
 
         return string.toString();
     }
