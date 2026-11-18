@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.robot.subsystem;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -74,5 +75,8 @@ public class Flywheel {
         TelemetryPasser.telemetry.addLine()
                 .addData("Flywheel Power: ", flywheel.getPower())
                 .addData("Flywheel Velocity (Degrees per Second): ", flywheel.getVelocity(AngleUnit.DEGREES));
+    }
+    public void setDirection(DcMotorSimple.Direction direction) {
+        flywheel.setDirection(direction);
     }
 }

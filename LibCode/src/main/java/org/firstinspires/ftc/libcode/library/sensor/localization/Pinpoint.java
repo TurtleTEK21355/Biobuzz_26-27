@@ -24,6 +24,7 @@ package org.firstinspires.ftc.libcode.library.sensor.localization;
 
 import static org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser.telemetry;
 
+import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.libcode.hardware.GoBildaPinpoint;
@@ -49,7 +50,10 @@ public class Pinpoint implements Localizer{
     public void resetPosition(){
         pinpoint.resetPosAndIMU();
     }
-    public void setPosition(Pose2D position){pinpoint.setPosition(position);}
+
+    public void setPosition(Pose2D position){
+        pinpoint.setPosition(position);
+    }
 
     public void resetIMU(){
         pinpoint.recalibrateIMU();
@@ -64,6 +68,9 @@ public class Pinpoint implements Localizer{
     public void setOffset(Pose2D offset){}
     public void setPodOffsets(double xOffset, double yOffset) {
         pinpoint.setPodOffsets(xOffset, yOffset, DistanceUnit.MM);
+    }
+    public void setPodDirections(GoBildaPinpoint.EncoderDirection xDirection, GoBildaPinpoint.EncoderDirection yDirection){
+        pinpoint.setEncoderDirections(xDirection, yDirection);
     }
     public Pose2D getRelativePosition(Pose2D reference){
         return getPosition().subtract(reference);
@@ -82,10 +89,11 @@ public class Pinpoint implements Localizer{
             FAULT_Y_POD_NOT_DETECTED - The device does not detect a Y pod plugged in
             FAULT_BAD_READ - The firmware detected a bad I²C read, if a bad read is detected, the device status is updated and the previous position is reported
             */
-            telemetry.addData("Status", pinpoint.getDeviceStatus());
-            telemetry.addData("Pinpoint Frequency", pinpoint.getFrequency()); //prints/gets the current refresh rate of the Pinpoint
+            TelemetryPasser.telemetry.addData("Status", pinpoint.getDeviceStatus());
+            TelemetryPasser.telemetry.addData("Pinpoint Frequency", pinpoint.getFrequency()); //prints/gets the current refresh rate of the Pinpoint
     }
     public void positionTelemetry(){
-        telemetry.addData("Position: ", getPosition());
+        pinpoint.update();
+        TelemetryPasser.telemetry.addData("Position: ", getPosition());
     }
 }

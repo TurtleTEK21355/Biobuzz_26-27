@@ -7,26 +7,31 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.libcode.examples.command.*;
 import org.firstinspires.ftc.libcode.library.commandsinternal.LinearCommandOpMode;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
+import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
 import org.firstinspires.ftc.teamcode.robot.Sting;
 
 //@Configurable
-@Autonomous(name= "Should Literally Just Park and if it Doesn't I'll cry", group = "auto")
+@Autonomous(name= "Leave N' Park", group = "auto")
 public class JustPark extends LinearCommandOpMode {
     //Robot Start
 
     Sting robot;
-    Pose2D tolerance = new Pose2D(1.5,1.5,0.2);
+    Pose2D tolerance = new Pose2D(1.5,1.5,5);
 
     @Override
     public void initialize() {
+        TelemetryPasser.telemetry = telemetry;
         robot = Sting.build(hardwareMap);
-        robot.getPinpoint().setPosition(new Pose2D(9, 84, 180));
+        sleep(500);
+        robot.getPinpoint().setPosition(new Pose2D(9, 84, -90));
+        sleep(300);
+        robot.getPinpoint().positionTelemetry();
+        telemetry.update();
         commands();
     }
 
     public void commands () {
-
-        addCommand(new MovePIDCommand(new Pose2D(12,88,180), 1, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
+        addCommand(new MovePIDCommand(new Pose2D(13, 90,-90), 0.75, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
     }
 
     @Override

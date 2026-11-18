@@ -50,7 +50,7 @@ public class Constants {
 
     public static double inchesToEncoderDrivetrain = 41.8013539662;
 
-    public static double drivetrainLinearKp = 0.08;
+    public static double drivetrainLinearKp = 0.22;
     public static double drivetrainLinearKi = 0;
     public static double drivetrainLinearKd = 0;
     public static PIDConstants getLinearPIDConstants() {

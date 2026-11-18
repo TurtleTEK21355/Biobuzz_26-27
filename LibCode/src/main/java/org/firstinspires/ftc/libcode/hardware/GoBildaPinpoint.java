@@ -528,7 +528,7 @@ public class GoBildaPinpoint extends I2cDeviceSynchDevice<I2cDeviceSynchSimple> 
      * @param angleUnit Radians or Degrees
      */
     public void setHeading(double heading, AngleUnit angleUnit){
-        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) angleUnit.toRadians(heading), ByteOrder.LITTLE_ENDIAN)));
+        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) -angleUnit.toRadians(heading), ByteOrder.LITTLE_ENDIAN)));
     }
 
     /**
