@@ -31,8 +31,8 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
         double startX = 56;
         double startY = 9;
         double edge = 10;
-        double flowerX = 55; //guess
-        double flowerY = 144; //guess
+        double flowerX = 50; //guess
+        double flowerY = 132; //guess
         double shootY = 120;
         //Robot shoots the loaded pollen
         //new Shoot();
@@ -40,7 +40,8 @@ public class AutoPathUnPsuedoCodedIGuess extends LinearCommandOpMode {
         //Robot picks up pollen from the garden
         addCommand(new MovePIDCommand(new Pose2D(edge,startY,0), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
 
-        //Robot moves to the other side  
+        //Robot moves to the other side
+        addCommand(new MovePIDCommand(new Pose2D(36,shootY,270), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
         addCommand(new MovePIDCommand(new Pose2D(startX,shootY,270), speed, robot.getDrivetrain(), robot.getPinpoint(), tolerance));
 
         //Robot shoots the 4 pollen

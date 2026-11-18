@@ -53,13 +53,13 @@ public class MechanumDrive {
         this.frontRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         this.backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        setWheelDirection(DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD);
+        setWheelDirection(DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.REVERSE, DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.REVERSE);
 
     }
     public void fcControl(double y, double x, double h, double heading) {
-        y = Math.pow(y, Constants.drivetrainExponentIndex);
-        x = Math.pow(x, Constants.drivetrainExponentIndex);
-        h = Math.pow(h, Constants.drivetrainExponentIndex);
+        //y = Math.pow(y, Constants.drivetrainExponentIndex);
+        //x = Math.pow(x, Constants.drivetrainExponentIndex);
+        //h = Math.pow(h, Constants.drivetrainExponentIndex);
 
         double r = Math.hypot(y, x);
         double theta = Math.atan2(y, x);
