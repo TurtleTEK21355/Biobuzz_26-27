@@ -42,23 +42,23 @@ public class MainTeleOp extends OpMode {
         telemetry.addData("Nectar:", robot.getFlywheelNectar().getVelocity());
 
 
-        robot.getDrivetrain().fcControl(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.getPinpoint().getPosition().h);
+        robot.getDrivetrain().control(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x);
 
-        if (gamepad1.left_bumper) robot.getIntake().setPower(0.8);
-        else robot.getIntake().setPower(0);
-
-        if (gamepad1.right_bumper) {
-            robot.getFlywheelNectar().setVelocity(300);
-            robot.getFlywheelPollen().setVelocity(300);
-            if (robot.getFlywheelNectar().getVelocity()>280 && robot.getFlywheelPollen().getVelocity()>280)
-                robot.getGates().open();
-        } else {
-            robot.getFlywheelNectar().setVelocity(0);
-            robot.getFlywheelPollen().setVelocity(0);
-            robot.getGates().close();
-        }
-        robot.getAugur().setPower(gamepad1.left_trigger/2.5);
-
-        telemetry.update();
+//        if (gamepad1.left_bumper) robot.getIntake().setPower(0.8);
+//        else robot.getIntake().setPower(0);
+//
+//        if (gamepad1.right_bumper) {
+//            robot.getFlywheelNectar().setVelocity(300);
+//            robot.getFlywheelPollen().setVelocity(300);
+//            if (robot.getFlywheelNectar().getVelocity()>280 && robot.getFlywheelPollen().getVelocity()>280)
+//                robot.getGates().open();
+//        } else {
+//            robot.getFlywheelNectar().setVelocity(0);
+//            robot.getFlywheelPollen().setVelocity(0);
+//            robot.getGates().close();
+//        }
+//        robot.getAugur().setPower(gamepad1.left_trigger/2.5);
+//
+//        telemetry.update();
     }
 }
