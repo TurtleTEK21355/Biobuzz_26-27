@@ -11,7 +11,7 @@ public class Constants {
     public final static Pose2D FLOWER_EDGE = new Pose2D(1234567890, 1234567890, 1234567890);
     public final static double shootingVelocityPollen = 0;
     public final static double shootingVelocityNectar = 0;
-    public final static double gateOpenPosition = 0.8;
+    public final static double gateOpenPosition = 0.6;
     public final static double gateClosePosition = 0.2;
     public final static double flowerMechanismUpPosition = 0;
     public final static double flowerMechanismDownPosition = 0;

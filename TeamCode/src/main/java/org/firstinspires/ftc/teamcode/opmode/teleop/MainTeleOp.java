@@ -10,12 +10,14 @@ import org.firstinspires.ftc.libcode.library.commandsinternal.Command;
 import org.firstinspires.ftc.libcode.library.commandsinternal.CommandScheduler;
 import org.firstinspires.ftc.libcode.library.internal.Pose2D;
 import org.firstinspires.ftc.libcode.library.internal.telemetry.TelemetryPasser;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.command.FlywheelSetVelocity;
 import org.firstinspires.ftc.teamcode.command.GatesOpen;
 import org.firstinspires.ftc.teamcode.robot.Sting;
 
 //@Configurable
-@TeleOp(name = "TeleOp", group = "teleop")
+@TeleOp(name = "The " +
+        "TeleOp", group = "teleop")
 public class MainTeleOp extends OpMode {
     protected Sting robot;
     private final CommandScheduler commandScheduler = new CommandScheduler();
@@ -41,9 +43,10 @@ public class MainTeleOp extends OpMode {
         telemetry.addLine("\nFlywheel Velocities:");
         telemetry.addData("Pollen:", robot.getFlywheelPollen().getVelocity());
         telemetry.addData("Nectar:", robot.getFlywheelNectar().getVelocity());
+        telemetry.addData("\nPollen Gate Position: ", robot.getGates().getPositionPollen());
 
 
-        robot.getDrivetrain().fcControl(gamepad1.left_stick_x, -gamepad1.left_stick_y, gamepad1.right_stick_x, robot.getPinpoint().getPosition().h);
+        robot.getDrivetrain().fcControl(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x, robot.getIMU().getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
 
         if (gamepad1.left_bumper) robot.getIntake().setPower(0.8);
         else robot.getIntake().setPower(0);
@@ -60,7 +63,9 @@ public class MainTeleOp extends OpMode {
         }
         robot.getAugur().setPower(gamepad1.left_trigger/2.5);
         robot.getPollenPusher().setPosition(gamepad1.right_trigger);
-
+        if (gamepad2.right_trigger != 0) {
+            robot.getGates().manualSetPositionPollen(gamepad2.right_trigger);
+        }
         telemetry.update();
     }
 }

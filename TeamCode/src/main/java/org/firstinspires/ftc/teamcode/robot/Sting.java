@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.libcode.hardware.GoBildaPinpoint;
@@ -26,12 +27,13 @@ public class Sting {
     private DcMotor intake;
     private DcMotor augur;
     private Webcam webcam;
-    private LimelightColorBlob limelight;
+//    private LimelightColorBlob limelight;
     private Pinpoint pinpoint;
     private Servo pollenPusher;
+    private IMU imu;
 
 
-    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, DcMotor augur, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight, Pinpoint pinpoint, Servo pollenPusher) {
+    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, DcMotor augur, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, Pinpoint pinpoint, Servo pollenPusher, IMU imu) {
         this.flywheelNectar = flywheelNectar;
         this.flywheelPollen = flywheelPollen;
         this.gates = gates;
@@ -39,14 +41,14 @@ public class Sting {
         this.drivetrain = drivetrain;
         this.intake = intake;
         this.webcam = webcam;
-        this.limelight = limelight;
+//        this.limelight = limelight;
         this.pinpoint = pinpoint;
         this.pollenPusher = pollenPusher;
         flywheelPollen.setDirection(DcMotorSimple.Direction.REVERSE);
         pinpoint.setPodDirections(GoBildaPinpoint.EncoderDirection.REVERSED, GoBildaPinpoint.EncoderDirection.FORWARD);
         augur.setDirection(DcMotorSimple.Direction.REVERSE);
         pollenPusher.setDirection(Servo.Direction.REVERSE);
-
+        this.imu = imu;
     }
     public void setFlywheelNectarVelocity(double velocity) { flywheelNectar.setVelocity(velocity); }
     public void setFlywheelPollenVelocity(double velocity) { flywheelPollen.setVelocity(velocity); }
@@ -56,12 +58,13 @@ public class Sting {
     public Flywheel getFlywheelNectar() { return flywheelNectar; }
 
     public Webcam getWebcam() { return webcam; }
-    public LimelightColorBlob getLimelight() { return limelight; }
+//    public LimelightColorBlob getLimelight() { return limelight; }
     public Pinpoint getPinpoint() { return pinpoint; }
     public Gates getGates() { return gates; }
     public DcMotor getIntake() { return intake; }
     public DcMotor getAugur() { return augur; }
     public Servo getPollenPusher() { return pollenPusher; }
+    public IMU getIMU() { return imu; }
 
     public void flywheelsTelemetry(){
         TelemetryPasser.telemetry.addLine("\nRight Flywheel:");
@@ -101,9 +104,10 @@ public class Sting {
                 hardwareMap.get(DcMotor.class, StingHardwareName.BACKRIGHTDT.getName())),
             hardwareMap.get(DcMotor.class, StingHardwareName.INTAKE.getName()),
             new Webcam(hardwareMap.get(CameraName.class, StingHardwareName.WEBCAM.getName()), 0, 0, 0, 0, 45, 0),
-            new LimelightColorBlob(hardwareMap.get(Limelight3A.class, StingHardwareName.LIMELIGHT.getName())),
+//            new LimelightColorBlob(hardwareMap.get(Limelight3A.class, StingHardwareName.LIMELIGHT.getName())),
             new Pinpoint(hardwareMap.get(GoBildaPinpoint.class, StingHardwareName.PINPOINT.getName())),
-                hardwareMap.get(Servo.class, StingHardwareName.POLLEN_PUSHER.getName())
+                hardwareMap.get(Servo.class, StingHardwareName.POLLEN_PUSHER.getName()),
+            hardwareMap.get(IMU.class, "imu")
         );
     }
 
