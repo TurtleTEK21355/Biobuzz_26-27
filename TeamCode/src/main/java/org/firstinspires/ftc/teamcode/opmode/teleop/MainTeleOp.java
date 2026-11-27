@@ -31,6 +31,7 @@ public class MainTeleOp extends OpMode {
         telemetry.addLine("\nDrivetrain: Joysticks");
         telemetry.addLine("Intake: Left Bumper");
         telemetry.addLine("Shoot: Right Bumper");
+        telemetry.addLine("Pollen Pusher: Right Trigger");
         telemetry.update();
     }
 
@@ -58,6 +59,7 @@ public class MainTeleOp extends OpMode {
             robot.getGates().close();
         }
         robot.getAugur().setPower(gamepad1.left_trigger/2.5);
+        robot.getPollenPusher().setPosition(gamepad1.right_trigger);
 
         telemetry.update();
     }

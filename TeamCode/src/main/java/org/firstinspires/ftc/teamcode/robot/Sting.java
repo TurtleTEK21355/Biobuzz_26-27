@@ -28,9 +28,10 @@ public class Sting {
     private Webcam webcam;
     private LimelightColorBlob limelight;
     private Pinpoint pinpoint;
+    private Servo pollenPusher;
 
 
-    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, DcMotor augur, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight, Pinpoint pinpoint) {
+    public Sting(Flywheel flywheelPollen, Flywheel flywheelNectar, Gates gates, DcMotor augur, MechanumDrive drivetrain, DcMotor intake, Webcam webcam, LimelightColorBlob limelight, Pinpoint pinpoint, Servo pollenPusher) {
         this.flywheelNectar = flywheelNectar;
         this.flywheelPollen = flywheelPollen;
         this.gates = gates;
@@ -40,9 +41,11 @@ public class Sting {
         this.webcam = webcam;
         this.limelight = limelight;
         this.pinpoint = pinpoint;
+        this.pollenPusher = pollenPusher;
         flywheelPollen.setDirection(DcMotorSimple.Direction.REVERSE);
         pinpoint.setPodDirections(GoBildaPinpoint.EncoderDirection.REVERSED, GoBildaPinpoint.EncoderDirection.FORWARD);
         augur.setDirection(DcMotorSimple.Direction.REVERSE);
+        pollenPusher.setDirection(Servo.Direction.REVERSE);
 
     }
     public void setFlywheelNectarVelocity(double velocity) { flywheelNectar.setVelocity(velocity); }
@@ -58,6 +61,7 @@ public class Sting {
     public Gates getGates() { return gates; }
     public DcMotor getIntake() { return intake; }
     public DcMotor getAugur() { return augur; }
+    public Servo getPollenPusher() { return pollenPusher; }
 
     public void flywheelsTelemetry(){
         TelemetryPasser.telemetry.addLine("\nRight Flywheel:");
@@ -98,7 +102,8 @@ public class Sting {
             hardwareMap.get(DcMotor.class, StingHardwareName.INTAKE.getName()),
             new Webcam(hardwareMap.get(CameraName.class, StingHardwareName.WEBCAM.getName()), 0, 0, 0, 0, 45, 0),
             new LimelightColorBlob(hardwareMap.get(Limelight3A.class, StingHardwareName.LIMELIGHT.getName())),
-            new Pinpoint(hardwareMap.get(GoBildaPinpoint.class, StingHardwareName.PINPOINT.getName()))
+            new Pinpoint(hardwareMap.get(GoBildaPinpoint.class, StingHardwareName.PINPOINT.getName())),
+                hardwareMap.get(Servo.class, StingHardwareName.POLLEN_PUSHER.getName())
         );
     }
 
@@ -115,7 +120,8 @@ public class Sting {
         INTAKE("intake"),
         WEBCAM("webcam"),
         LIMELIGHT("limelight"),
-        PINPOINT("pinpoint");
+        PINPOINT("pinpoint"),
+        POLLEN_PUSHER("pollen_pusher");
 
         private final String name;
 
